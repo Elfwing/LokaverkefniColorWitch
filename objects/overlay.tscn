@@ -1,0 +1,114 @@
+[gd_scene load_steps=10 format=3 uid="uid://okdqvfq5ga1c"]
+
+[ext_resource type="Script" path="res://objects/overlay.gd" id="1_45x87"]
+[ext_resource type="Texture2D" uid="uid://cu05o4tck3fla" path="res://assets/scoreTag.png" id="1_sajqb"]
+[ext_resource type="Texture2D" uid="uid://ccmub42m8l0sc" path="res://assets/coinTag.png" id="2_nnd5c"]
+[ext_resource type="Theme" uid="uid://bldj4jyv25lbh" path="res://mainTheme.tres" id="3_3da1x"]
+[ext_resource type="Texture2D" uid="uid://dfhhpi7xwnnyg" path="res://assets/potionIcon.png" id="5_cepwi"]
+[ext_resource type="Texture2D" uid="uid://855wx8ekmj8d" path="res://assets/paperIcon.png" id="5_m0w68"]
+[ext_resource type="Texture2D" uid="uid://bthifmvjvbm0d" path="res://assets/active.png" id="7_kvl1d"]
+[ext_resource type="Texture2D" uid="uid://df4tv5gj2gwq5" path="res://assets/inactive.png" id="8_lrjxm"]
+[ext_resource type="Texture2D" uid="uid://ckowc8k3lvdmr" path="res://assets/helpButton.png" id="9_dk1bi"]
+
+[node name="overlay" type="Node2D"]
+position = Vector2(26, 41)
+script = ExtResource("1_45x87")
+
+[node name="scoreTag" type="Sprite2D" parent="."]
+position = Vector2(90, 15)
+texture = ExtResource("1_sajqb")
+
+[node name="scoreAmount" type="Label" parent="scoreTag"]
+offset_left = -32.0
+offset_top = -16.0
+offset_right = 76.0
+offset_bottom = 18.0
+theme = ExtResource("3_3da1x")
+theme_override_font_sizes/font_size = 24
+
+[node name="coinTag" type="Sprite2D" parent="."]
+position = Vector2(610, 15)
+texture = ExtResource("2_nnd5c")
+
+[node name="coinAmount" type="Label" parent="coinTag"]
+offset_left = -34.0
+offset_top = -16.0
+offset_right = 74.0
+offset_bottom = 18.0
+theme = ExtResource("3_3da1x")
+theme_override_font_sizes/font_size = 24
+
+[node name="potionMode" type="TextureButton" parent="."]
+offset_left = 42.0
+offset_top = 50.0
+offset_right = 74.0
+offset_bottom = 97.0
+texture_normal = ExtResource("5_cepwi")
+
+[node name="numberMode" type="TextureButton" parent="."]
+offset_left = 102.0
+offset_top = 50.0
+offset_right = 138.0
+offset_bottom = 97.0
+texture_normal = ExtResource("5_m0w68")
+
+[node name="easyMode" type="TextureButton" parent="."]
+offset_left = 529.0
+offset_top = 54.0
+offset_right = 570.0
+offset_bottom = 95.0
+texture_normal = ExtResource("7_kvl1d")
+
+[node name="easyLabel" type="Label" parent="easyMode"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 31.0
+offset_bottom = 32.0
+theme = ExtResource("3_3da1x")
+text = "e"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mediumMode" type="TextureButton" parent="."]
+offset_left = 590.0
+offset_top = 54.0
+offset_right = 631.0
+offset_bottom = 95.0
+texture_normal = ExtResource("8_lrjxm")
+
+[node name="easyLabel" type="Label" parent="mediumMode"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -1.0
+offset_right = 32.0
+offset_bottom = 31.0
+theme = ExtResource("3_3da1x")
+text = "m"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hardMode" type="TextureButton" parent="."]
+offset_left = 650.0
+offset_top = 54.0
+offset_right = 691.0
+offset_bottom = 95.0
+texture_normal = ExtResource("8_lrjxm")
+
+[node name="easyLabel" type="Label" parent="hardMode"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 31.0
+offset_bottom = 32.0
+theme = ExtResource("3_3da1x")
+text = "h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="helpButton" type="TextureButton" parent="."]
+offset_left = 665.0
+offset_top = 650.0
+offset_right = 707.0
+offset_bottom = 692.0
+texture_normal = ExtResource("9_dk1bi")
+
+[connection signal="button_down" from="helpButton" to="." method="_on_help_button_button_down"]

@@ -1,0 +1,143 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3054shdv3crb"]
+
+[ext_resource type="Script" path="res://objects/tabs.gd" id="1_ytx4x"]
+[ext_resource type="Texture2D" uid="uid://bj2bmdpcfayo6" path="res://assets/tab1.png" id="2_x7eyi"]
+[ext_resource type="Script" path="res://objects/tab1.gd" id="3_fl7bw"]
+[ext_resource type="Theme" uid="uid://bldj4jyv25lbh" path="res://mainTheme.tres" id="4_gbu7e"]
+[ext_resource type="Texture2D" uid="uid://cb2gqrp4671l1" path="res://assets/tab2.png" id="4_grftu"]
+[ext_resource type="Script" path="res://objects/tab2.gd" id="5_0ybwl"]
+[ext_resource type="Texture2D" uid="uid://davhsj5gxj3np" path="res://assets/tab3.png" id="5_xuv7v"]
+[ext_resource type="Script" path="res://objects/tab3.gd" id="9_1evem"]
+[ext_resource type="Texture2D" uid="uid://epqnuiuaye1x" path="res://assets/smallArrowLeft.png" id="9_yhve7"]
+[ext_resource type="Texture2D" uid="uid://bmsogc0hwsean" path="res://assets/smallArrowRight.png" id="10_e01pl"]
+
+[node name="tabs" type="Node2D"]
+script = ExtResource("1_ytx4x")
+
+[node name="tab1Button" type="Button" parent="."]
+offset_left = 61.0
+offset_top = 402.0
+offset_right = 153.0
+offset_bottom = 428.0
+
+[node name="tab2Button" type="Button" parent="."]
+offset_left = 155.0
+offset_top = 402.0
+offset_right = 247.0
+offset_bottom = 428.0
+
+[node name="tab3Button" type="Button" parent="."]
+offset_left = 249.0
+offset_top = 402.0
+offset_right = 341.0
+offset_bottom = 428.0
+
+[node name="tab1" type="Sprite2D" parent="."]
+position = Vector2(375, 513)
+texture = ExtResource("2_x7eyi")
+script = ExtResource("3_fl7bw")
+
+[node name="witchText" type="Label" parent="tab1"]
+offset_left = -288.0
+offset_top = -58.0
+offset_right = 119.0
+offset_bottom = 85.0
+theme = ExtResource("4_gbu7e")
+text = "Try and guess the color, the closer you are the more money I'll give you"
+autowrap_mode = 2
+
+[node name="redInput" type="LineEdit" parent="tab1"]
+offset_left = -225.0
+offset_top = 57.0
+offset_right = -105.0
+offset_bottom = 75.0
+theme = ExtResource("4_gbu7e")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+max_length = 3
+context_menu_enabled = false
+
+[node name="redLabel" type="Label" parent="tab1/redInput"]
+layout_mode = 0
+offset_left = -60.0
+offset_right = -2.0
+offset_bottom = 26.0
+text = "Red:"
+
+[node name="greInput" type="LineEdit" parent="tab1"]
+offset_left = -85.0
+offset_top = 57.0
+offset_right = 35.0
+offset_bottom = 75.0
+theme = ExtResource("4_gbu7e")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+max_length = 3
+context_menu_enabled = false
+
+[node name="greLabel" type="Label" parent="tab1/greInput"]
+layout_mode = 0
+offset_left = -57.0
+offset_right = -2.0
+offset_bottom = 26.0
+text = "Gre:"
+
+[node name="bluInput" type="LineEdit" parent="tab1"]
+offset_left = 55.0
+offset_top = 57.0
+offset_right = 175.0
+offset_bottom = 75.0
+theme = ExtResource("4_gbu7e")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+max_length = 3
+context_menu_enabled = false
+
+[node name="bluLabel" type="Label" parent="tab1/bluInput"]
+layout_mode = 0
+offset_left = -51.0
+offset_right = -2.0
+offset_bottom = 26.0
+text = "Blu:"
+
+[node name="tab2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(375, 513)
+texture = ExtResource("4_grftu")
+script = ExtResource("5_0ybwl")
+
+[node name="tab3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(375, 513)
+texture = ExtResource("5_xuv7v")
+script = ExtResource("9_1evem")
+
+[node name="smallArrowLeft" type="TextureButton" parent="tab3"]
+offset_left = -291.0
+offset_top = -4.0
+offset_right = -251.0
+offset_bottom = 36.0
+texture_normal = ExtResource("9_yhve7")
+
+[node name="smallArrowRight" type="TextureButton" parent="tab3"]
+offset_left = 251.0
+offset_top = -4.0
+offset_right = 291.0
+offset_bottom = 36.0
+texture_normal = ExtResource("10_e01pl")
+
+[node name="flowersOwned" type="GridContainer" parent="tab3"]
+anchors_preset = -1
+anchor_left = 0.012
+anchor_top = -4.69
+anchor_right = 0.012
+anchor_bottom = -4.69
+offset_left = -253.62
+offset_top = 1036.01
+offset_right = 238.38
+offset_bottom = 1268.01
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 0
+columns = 4
+
+[connection signal="button_down" from="tab3/smallArrowLeft" to="tab3" method="_on_small_arrow_left_button_down"]
+[connection signal="button_down" from="tab3/smallArrowRight" to="tab3" method="_on_small_arrow_right_button_down"]

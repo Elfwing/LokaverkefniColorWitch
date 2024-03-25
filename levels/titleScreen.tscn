@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3jy2o0e2vfnu"]
+
+[ext_resource type="Script" path="res://levels/titleScreen.gd" id="1_8a6ld"]
+[ext_resource type="Texture2D" uid="uid://wacg8a64cbja" path="res://assets/background.png" id="2_ki68h"]
+[ext_resource type="Texture2D" uid="uid://bc5psarhf66nv" path="res://assets/titleScreenUI.png" id="3_7vudi"]
+[ext_resource type="Texture2D" uid="uid://g0pmgmhifcou" path="res://assets/loadButton.png" id="4_k5o8n"]
+[ext_resource type="Theme" uid="uid://bldj4jyv25lbh" path="res://mainTheme.tres" id="5_38e76"]
+[ext_resource type="Texture2D" uid="uid://clv634gv186v4" path="res://assets/newSaveButton.png" id="5_ww4sr"]
+
+[node name="titleScreen" type="Node2D"]
+script = ExtResource("1_8a6ld")
+
+[node name="canvasLayer" type="CanvasLayer" parent="."]
+
+[node name="background" type="Sprite2D" parent="canvasLayer"]
+position = Vector2(375, 375)
+texture = ExtResource("2_ki68h")
+
+[node name="titleScreenUi" type="Sprite2D" parent="canvasLayer"]
+position = Vector2(375, 375)
+texture = ExtResource("3_7vudi")
+
+[node name="load" type="TextureButton" parent="canvasLayer/titleScreenUi"]
+offset_left = -113.0
+offset_top = -125.0
+offset_right = 112.0
+offset_bottom = -38.0
+texture_normal = ExtResource("4_k5o8n")
+metadata/_edit_use_anchors_ = true
+
+[node name="loadLabel" type="Label" parent="canvasLayer/titleScreenUi/load"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 5.0
+offset_right = 189.0
+offset_bottom = 80.0
+theme = ExtResource("5_38e76")
+text = "Load Last Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="new" type="TextureButton" parent="canvasLayer/titleScreenUi"]
+offset_left = -113.0
+offset_top = 39.0
+offset_right = 113.0
+offset_bottom = 125.0
+texture_normal = ExtResource("5_ww4sr")
+metadata/_edit_use_anchors_ = true
+
+[node name="newLabel" type="Label" parent="canvasLayer/titleScreenUi/new"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 5.0
+offset_right = 189.0
+offset_bottom = 80.0
+theme = ExtResource("5_38e76")
+text = "Start New Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_down" from="canvasLayer/titleScreenUi/load" to="." method="_on_load_button_down"]
+[connection signal="button_down" from="canvasLayer/titleScreenUi/new" to="." method="_on_new_button_down"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dot4r4eufl6ke"]
+
+[ext_resource type="Script" path="res://objects/quest.gd" id="1_2dows"]
+[ext_resource type="Texture2D" uid="uid://bf1xkt0nw26jt" path="res://assets/questPaper.png" id="1_exrkc"]
+[ext_resource type="Texture2D" uid="uid://bs6gmptvhtt2d" path="res://assets/glassBottle.png" id="3_tmbw2"]
+[ext_resource type="Theme" uid="uid://bldj4jyv25lbh" path="res://mainTheme.tres" id="4_3a201"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2sh55"]
+size = Vector2(102, 148)
+
+[node name="quest" type="Area2D"]
+script = ExtResource("1_2dows")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(51, 74)
+shape = SubResource("RectangleShape2D_2sh55")
+
+[node name="QuestPaperPotion" type="Sprite2D" parent="."]
+position = Vector2(51, 74)
+texture = ExtResource("1_exrkc")
+
+[node name="potion" type="Polygon2D" parent="QuestPaperPotion"]
+position = Vector2(0, 2)
+polygon = PackedVector2Array(-3, -12, -12, -7, -18, 3, -21, 13, -22, 27, -21, 40, -16, 49, -10, 53, -1, 54, 9, 53, 16, 48, 21, 37, 22, 27, 21, 12, 16, 0, 10, -10)
+
+[node name="glassBottle" type="Sprite2D" parent="QuestPaperPotion"]
+position = Vector2(0, 2)
+texture = ExtResource("3_tmbw2")
+
+[node name="QuestPaperNumber" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(51, 74)
+texture = ExtResource("1_exrkc")
+
+[node name="Red" type="Label" parent="QuestPaperNumber"]
+offset_left = -46.0
+offset_top = -70.0
+offset_right = 47.0
+offset_bottom = -16.0
+theme = ExtResource("4_3a201")
+text = "Red"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Blu" type="Label" parent="QuestPaperNumber"]
+offset_left = -46.0
+offset_top = -16.0
+offset_right = 47.0
+offset_bottom = 16.0
+theme = ExtResource("4_3a201")
+text = "Blu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Gre" type="Label" parent="QuestPaperNumber"]
+offset_left = -46.0
+offset_top = 15.0
+offset_right = 47.0
+offset_bottom = 70.0
+theme = ExtResource("4_3a201")
+text = "Gre"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

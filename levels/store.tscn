@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5ipi6grwc612"]
+
+[ext_resource type="Texture2D" uid="uid://wacg8a64cbja" path="res://assets/background.png" id="1_if010"]
+[ext_resource type="Script" path="res://levels/store.gd" id="1_lpbta"]
+[ext_resource type="PackedScene" uid="uid://c3054shdv3crb" path="res://objects/tabs.tscn" id="2_r5wb5"]
+[ext_resource type="Texture2D" uid="uid://ciu71rb8mvx85" path="res://assets/arrowLeft.png" id="3_i6frv"]
+[ext_resource type="Texture2D" uid="uid://dgppt2nk0l40c" path="res://assets/shelf.png" id="4_lmh35"]
+[ext_resource type="Script" path="res://levels/shelfGrid.gd" id="5_uf24b"]
+[ext_resource type="PackedScene" uid="uid://okdqvfq5ga1c" path="res://objects/overlay.tscn" id="14_gdsmg"]
+
+[node name="store" type="Node2D"]
+script = ExtResource("1_lpbta")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="background" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(375, 375)
+texture = ExtResource("1_if010")
+
+[node name="tabs" parent="CanvasLayer" instance=ExtResource("2_r5wb5")]
+position = Vector2(0, 74)
+
+[node name="shelfTop" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(375, 223)
+texture = ExtResource("4_lmh35")
+
+[node name="shelfBottom" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(375, 423.5)
+texture = ExtResource("4_lmh35")
+
+[node name="shelfGrid" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.012
+anchor_top = -4.69
+anchor_right = 0.012
+anchor_bottom = -4.69
+offset_left = 104.0
+offset_top = 3635.5
+offset_right = 629.0
+offset_bottom = 3949.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 35
+theme_override_constants/v_separation = 90
+columns = 4
+script = ExtResource("5_uf24b")
+
+[node name="arrowLeft" type="TextureButton" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 309.0
+offset_right = 98.0
+offset_bottom = 391.0
+texture_normal = ExtResource("3_i6frv")
+
+[node name="overlay" parent="CanvasLayer" instance=ExtResource("14_gdsmg")]
+
+[connection signal="pressed" from="CanvasLayer/arrowLeft" to="." method="_on_arrow_left_pressed"]

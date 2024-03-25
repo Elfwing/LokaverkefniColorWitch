@@ -1,0 +1,108 @@
+[gd_scene load_steps=10 format=3 uid="uid://dsv2w20pdivbd"]
+
+[ext_resource type="Texture2D" uid="uid://wacg8a64cbja" path="res://assets/background.png" id="1_h76fh"]
+[ext_resource type="Texture2D" uid="uid://bg6lfcg6nq32k" path="res://assets/tutorialUI.png" id="2_kls5t"]
+[ext_resource type="Texture2D" uid="uid://wt1a4j17ml30" path="res://assets/witch.png" id="3_8kgv6"]
+[ext_resource type="Theme" uid="uid://bldj4jyv25lbh" path="res://mainTheme.tres" id="3_8y1bq"]
+[ext_resource type="Script" path="res://levels/tutorialUI.gd" id="3_kxi4e"]
+[ext_resource type="Texture2D" uid="uid://dnanlycjldvu8" path="res://assets/colorBorder.png" id="5_c37ic"]
+[ext_resource type="Texture2D" uid="uid://2wwghnulpiub" path="res://assets/arrowRight.png" id="7_fwm2t"]
+[ext_resource type="Texture2D" uid="uid://ciu71rb8mvx85" path="res://assets/arrowLeft.png" id="8_1x4wf"]
+[ext_resource type="Texture2D" uid="uid://dqyu7aa50ud0a" path="res://assets/exitButton.png" id="9_kg6tv"]
+
+[node name="tutorial" type="Node2D"]
+
+[node name="canvasLayer" type="CanvasLayer" parent="."]
+
+[node name="background" type="Sprite2D" parent="canvasLayer"]
+position = Vector2(375, 375)
+texture = ExtResource("1_h76fh")
+
+[node name="tutorialUI" type="Sprite2D" parent="canvasLayer"]
+position = Vector2(375, 375)
+texture = ExtResource("2_kls5t")
+script = ExtResource("3_kxi4e")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="canvasLayer/tutorialUI"]
+offset_left = -81.0
+offset_top = -144.0
+offset_right = 303.0
+offset_bottom = 57.0
+theme = ExtResource("3_8y1bq")
+theme_override_font_sizes/normal_font_size = 24
+text = "dfgadfg"
+tab_size = 7
+
+[node name="witchMini" type="Sprite2D" parent="canvasLayer/tutorialUI"]
+position = Vector2(-194.869, 0.198578)
+scale = Vector2(0.611756, 0.611756)
+texture = ExtResource("3_8kgv6")
+
+[node name="colorBorder1" type="Sprite2D" parent="canvasLayer/tutorialUI"]
+z_index = 1
+position = Vector2(-25, 103.876)
+scale = Vector2(0.747707, 0.747707)
+texture = ExtResource("5_c37ic")
+
+[node name="color1" type="ColorRect" parent="canvasLayer/tutorialUI/colorBorder1"]
+z_index = -1
+offset_left = -41.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="colorBorder2" type="Sprite2D" parent="canvasLayer/tutorialUI"]
+z_index = 1
+position = Vector2(100, 105)
+scale = Vector2(0.747707, 0.747707)
+texture = ExtResource("5_c37ic")
+
+[node name="color2" type="ColorRect" parent="canvasLayer/tutorialUI/colorBorder2"]
+z_index = -1
+offset_left = -41.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="colorBorder3" type="Sprite2D" parent="canvasLayer/tutorialUI"]
+z_index = 1
+position = Vector2(225, 106)
+scale = Vector2(0.747707, 0.747707)
+texture = ExtResource("5_c37ic")
+
+[node name="color3" type="ColorRect" parent="canvasLayer/tutorialUI/colorBorder3"]
+z_index = -1
+offset_left = -41.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="arrowLeft" type="TextureButton" parent="canvasLayer/tutorialUI"]
+visible = false
+offset_left = -352.0
+offset_top = -199.0
+offset_right = -270.0
+offset_bottom = -117.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("8_1x4wf")
+
+[node name="arrowRight" type="TextureButton" parent="canvasLayer/tutorialUI"]
+offset_left = 287.0
+offset_top = -199.0
+offset_right = 369.0
+offset_bottom = -117.0
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("7_fwm2t")
+texture_pressed = ExtResource("7_fwm2t")
+
+[node name="exitButton" type="TextureButton" parent="canvasLayer"]
+offset_left = 660.0
+offset_top = 30.0
+offset_right = 727.0
+offset_bottom = 99.0
+scale = Vector2(0.9, 0.9)
+texture_normal = ExtResource("9_kg6tv")
+
+[connection signal="button_down" from="canvasLayer/tutorialUI/arrowLeft" to="canvasLayer/tutorialUI" method="_on_arrow_left_button_down"]
+[connection signal="button_down" from="canvasLayer/tutorialUI/arrowRight" to="canvasLayer/tutorialUI" method="_on_arrow_right_button_down"]
+[connection signal="button_down" from="canvasLayer/exitButton" to="canvasLayer/tutorialUI" method="_on_exit_button_button_down"]

@@ -1,0 +1,29 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bldj4jyv25lbh"]
+
+[ext_resource type="FontFile" uid="uid://ccy1ng51n5a0o" path="res://fonts/Bridgeb.TTF" id="1_rbkw7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x0rb4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hiqga"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dcdpd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vwu1q"]
+
+[resource]
+default_font = ExtResource("1_rbkw7")
+default_font_size = 28
+Label/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/caret_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.611765)
+LineEdit/fonts/font = ExtResource("1_rbkw7")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_x0rb4")
+LineEdit/styles/normal = SubResource("StyleBoxEmpty_hiqga")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/line_separation = 3
+RichTextLabel/font_sizes/bold_font_size = 5
+TextEdit/colors/font_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.611765)
+TextEdit/styles/focus = SubResource("StyleBoxEmpty_dcdpd")
+TextEdit/styles/normal = SubResource("StyleBoxEmpty_vwu1q")

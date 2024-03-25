@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdsyecy3r4xpd"]
+
+[ext_resource type="Texture2D" uid="uid://wacg8a64cbja" path="res://assets/background.png" id="1_3jjn5"]
+[ext_resource type="Script" path="res://levels/cauldron.gd" id="1_m83ab"]
+[ext_resource type="Texture2D" uid="uid://wupd2xx5438g" path="res://assets/cauldron.png" id="2_68kn6"]
+[ext_resource type="PackedScene" uid="uid://c3054shdv3crb" path="res://objects/tabs.tscn" id="3_ojxjc"]
+[ext_resource type="Texture2D" uid="uid://dgppt2nk0l40c" path="res://assets/shelf.png" id="3_oquua"]
+[ext_resource type="Texture2D" uid="uid://2wwghnulpiub" path="res://assets/arrowRight.png" id="4_6iutx"]
+[ext_resource type="Script" path="res://levels/glassShelf.gd" id="4_w1fnl"]
+[ext_resource type="PackedScene" uid="uid://okdqvfq5ga1c" path="res://objects/overlay.tscn" id="6_5me7w"]
+
+[node name="cauldron" type="Node2D"]
+script = ExtResource("1_m83ab")
+
+[node name="canvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="background" type="Sprite2D" parent="canvasLayer"]
+position = Vector2(375, 375)
+texture = ExtResource("1_3jjn5")
+
+[node name="cauldron" type="Area2D" parent="canvasLayer"]
+position = Vector2(0, 22)
+
+[node name="potion" type="Polygon2D" parent="canvasLayer/cauldron"]
+show_behind_parent = true
+visibility_layer = 2
+position = Vector2(375, 375)
+color = Color(0.898039, 0.898039, 0.898039, 1)
+polygon = PackedVector2Array(5, -110, -26, -109, -50, -107, -60, -103, -82, -94, -94, -84, -97, -78, -93, -68, -85, -62, -61, -52, -35, -45, 5, -43, 47, -49, 77, -58, 92, -69, 96, -81, 90, -89, 80, -97, 63, -102, 40, -108)
+
+[node name="potionCollision" type="CollisionPolygon2D" parent="canvasLayer/cauldron"]
+position = Vector2(375, 375)
+polygon = PackedVector2Array(5, -110, -26, -109, -50, -107, -60, -103, -82, -94, -94, -84, -97, -78, -93, -68, -85, -62, -61, -52, -35, -45, 5, -43, 47, -49, 77, -58, 92, -69, 96, -81, 90, -89, 80, -97, 63, -102, 40, -108)
+
+[node name="cauldronImage" type="Sprite2D" parent="canvasLayer/cauldron"]
+visibility_layer = 512
+position = Vector2(375, 375)
+texture = ExtResource("2_68kn6")
+
+[node name="tabs" parent="canvasLayer" instance=ExtResource("3_ojxjc")]
+position = Vector2(0, 74)
+
+[node name="glassShelf" type="Sprite2D" parent="canvasLayer"]
+position = Vector2(375, 244)
+texture = ExtResource("3_oquua")
+script = ExtResource("4_w1fnl")
+
+[node name="arrowRight" type="TextureButton" parent="canvasLayer"]
+offset_left = 650.0
+offset_top = 309.0
+offset_right = 690.0
+offset_bottom = 349.0
+texture_normal = ExtResource("4_6iutx")
+
+[node name="overlay" parent="canvasLayer" instance=ExtResource("6_5me7w")]
+
+[connection signal="area_entered" from="canvasLayer/cauldron" to="canvasLayer/glassShelf" method="_on_cauldron_area_entered"]
+[connection signal="pressed" from="canvasLayer/arrowRight" to="." method="_on_arrow_right_pressed"]
